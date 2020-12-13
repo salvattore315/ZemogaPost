@@ -11,7 +11,7 @@ class DetailPostViewController: UIViewController {
     
     //MARKS: Variable & Outles
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UILabel!
+    @IBOutlet weak var descriptionPostLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -40,6 +40,7 @@ class DetailPostViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.getDescription()
         presenter.getService()
         
     }
@@ -63,6 +64,9 @@ extension DetailPostViewController: UITableViewDataSource {
 }
 
 extension DetailPostViewController: ServiceDetailPostView {
+    func setDescription(description: String) {
+        self.descriptionPostLabel.text = description
+    }
     
     func startCallingService() {
         

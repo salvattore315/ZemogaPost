@@ -26,10 +26,18 @@ class ShellWebService : Service {
             returnService(.get, GlobalConstants.Endpoints.post, URLEncoding())
             break
         case GlobalConstants.nameServices.getUser:
-            returnService(.get, GlobalConstants.Endpoints.getUser(userId: "1"), URLEncoding())
+            var userId = ""
+            if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
+                userId = String(post.userId ?? 0)
+            }
+            returnService(.get, GlobalConstants.Endpoints.getUser(userId: userId), URLEncoding())
             break
         case GlobalConstants.nameServices.getCommentsOfPost:
-            returnService(.get, GlobalConstants.Endpoints.getCommentsOfPost(postId: "1"), URLEncoding())
+            var postId = ""
+            if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
+                postId = String(post.id ?? 0)
+            }
+            returnService(.get, GlobalConstants.Endpoints.getCommentsOfPost(postId: postId), URLEncoding())
             break
         default:
             break

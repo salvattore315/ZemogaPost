@@ -17,7 +17,6 @@
 		BE26E7C92585D6430086C66B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26E7C82585D6430086C66B /* Extension.swift */; };
 		BE547F8D2585741C004874D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE547F8C2585741C004874D8 /* AppDelegate.swift */; };
 		BE547F8F2585741C004874D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE547F8E2585741C004874D8 /* SceneDelegate.swift */; };
-		BE547F912585741C004874D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE547F902585741C004874D8 /* ViewController.swift */; };
 		BE547F942585741C004874D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE547F922585741C004874D8 /* Main.storyboard */; };
 		BE547F972585741C004874D8 /* ZemogaPost.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE547F952585741C004874D8 /* ZemogaPost.xcdatamodeld */; };
 		BE547F992585741E004874D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE547F982585741E004874D8 /* Assets.xcassets */; };
@@ -32,6 +31,7 @@
 		BE80C8BE258597C800CB2A46 /* DetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80C8BD258597C800CB2A46 /* DetailPostTableViewCell.swift */; };
 		BEC55E422586755E007CF7D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E412586755E007CF7D2 /* User.swift */; };
 		BEC55E4725867573007CF7D2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E4625867573007CF7D2 /* Comment.swift */; };
+		BEC55E5025868859007CF7D2 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E4F25868859007CF7D2 /* SessionManager.swift */; };
 		C19A4BFA219F64E8AB578348 /* Pods_ZemogaPost_ZemogaPostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390C1BBFF37F0944728C9ABB /* Pods_ZemogaPost_ZemogaPostUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +72,6 @@
 		BE547F892585741C004874D8 /* ZemogaPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZemogaPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE547F8C2585741C004874D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE547F8E2585741C004874D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BE547F902585741C004874D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BE547F932585741C004874D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE547F962585741C004874D8 /* ZemogaPost.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZemogaPost.xcdatamodel; sourceTree = "<group>"; };
 		BE547F982585741E004874D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		BE80C8BD258597C800CB2A46 /* DetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewCell.swift; sourceTree = "<group>"; };
 		BEC55E412586755E007CF7D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BEC55E4625867573007CF7D2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		BEC55E4F25868859007CF7D2 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		C220B23DE0874666AC8B77BA /* Pods-ZemogaPost.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.development.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.development.xcconfig"; sourceTree = "<group>"; };
 		C40D351657B3E4EADCA12CF8 /* Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD54A447C2D460EBDDB490EC /* Pods-ZemogaPost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.release.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,19 +180,18 @@
 		BE547F8B2585741C004874D8 /* ZemogaPost */ = {
 			isa = PBXGroup;
 			children = (
+				BE26E7A72585C0720086C66B /* GlobalConstant.swift */,
 				BE547FD02585866A004874D8 /* Configuration Controllers */,
 				BE26E79C2585BEBC0086C66B /* Model */,
 				BE26E79B2585BEAB0086C66B /* Service */,
+				BEC55E4E2586884B007CF7D2 /* Utils */,
 				BE547F8C2585741C004874D8 /* AppDelegate.swift */,
 				BE547F8E2585741C004874D8 /* SceneDelegate.swift */,
-				BE547F902585741C004874D8 /* ViewController.swift */,
 				BE547F922585741C004874D8 /* Main.storyboard */,
-				BE547F982585741E004874D8 /* Assets.xcassets */,
 				BE547F9A2585741E004874D8 /* LaunchScreen.storyboard */,
+				BE547F982585741E004874D8 /* Assets.xcassets */,
 				BE547F9D2585741E004874D8 /* Info.plist */,
 				BE547F952585741C004874D8 /* ZemogaPost.xcdatamodeld */,
-				BE26E7A72585C0720086C66B /* GlobalConstant.swift */,
-				BE26E7C82585D6430086C66B /* Extension.swift */,
 			);
 			path = ZemogaPost;
 			sourceTree = "<group>";
@@ -244,6 +243,15 @@
 				BE80C8BD258597C800CB2A46 /* DetailPostTableViewCell.swift */,
 			);
 			path = DetailPost;
+			sourceTree = "<group>";
+		};
+		BEC55E4E2586884B007CF7D2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BEC55E4F25868859007CF7D2 /* SessionManager.swift */,
+				BE26E7C82585D6430086C66B /* Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		CB314A7FF5C80D232D432D03 /* Pods */ = {
@@ -505,7 +513,7 @@
 			files = (
 				BE547F972585741C004874D8 /* ZemogaPost.xcdatamodeld in Sources */,
 				BE80C8AF25858C7300CB2A46 /* DetailPostViewController.swift in Sources */,
-				BE547F912585741C004874D8 /* ViewController.swift in Sources */,
+				BEC55E5025868859007CF7D2 /* SessionManager.swift in Sources */,
 				BE26E7A82585C0720086C66B /* GlobalConstant.swift in Sources */,
 				BE80C8A225858C0F00CB2A46 /* PostPresenter.swift in Sources */,
 				BE26E7AD2585C4BF0086C66B /* BaseViewController.swift in Sources */,

@@ -15,16 +15,20 @@ class PostPresenter: Presenter {
         super.init()
     }
     
-    func attachView(view: ServiceTableView) {
+    public func attachView(view: ServiceTableView) {
         postView = view
     }
     
-    func detachView() {
+    public func detachView() {
         postView = nil
     }
     
+    public func savePostSelected(post: Post) {
+        SessionManager.saveCodableInSession(codable: post.encode(),
+                                            key: GlobalConstants.Keys.savePostSelected)
+    }
     
-    func getPost() {
+    public func getPost() {
         self.postView?.startCallingService()
         service.callServiceObject(parameters: nil, service: GlobalConstants.nameServices.getPost) { [self] (data, error) in
             if error != nil {
