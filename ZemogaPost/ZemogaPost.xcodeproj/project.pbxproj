@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580F54F62AD4E88C7229010D /* Pods_ZemogaPost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9560E78D37485F5233EA766 /* Pods_ZemogaPost.framework */; };
 		BE547F8D2585741C004874D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE547F8C2585741C004874D8 /* AppDelegate.swift */; };
 		BE547F8F2585741C004874D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE547F8E2585741C004874D8 /* SceneDelegate.swift */; };
 		BE547F912585741C004874D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE547F902585741C004874D8 /* ViewController.swift */; };
@@ -22,6 +23,8 @@
 		BE80C8B425858DC100CB2A46 /* DetailPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80C8B325858DC100CB2A46 /* DetailPostPresenter.swift */; };
 		BE80C8B92585915C00CB2A46 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80C8B82585915C00CB2A46 /* PostTableViewCell.swift */; };
 		BE80C8BE258597C800CB2A46 /* DetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80C8BD258597C800CB2A46 /* DetailPostTableViewCell.swift */; };
+		E98716475669392D6051CA91 /* Pods_ZemogaPostTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B383B979A516D6C6C0D2813D /* Pods_ZemogaPostTests.framework */; };
+		FC69D5F0BA1B860F7B3DC4BB /* Pods_ZemogaPost_ZemogaPostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CB2D832A7D751F1A7C6BFE /* Pods_ZemogaPost_ZemogaPostUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23CB2D832A7D751F1A7C6BFE /* Pods_ZemogaPost_ZemogaPostUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZemogaPost_ZemogaPostUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BD077E3A884CE8DA455D2C /* Pods-ZemogaPostTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPostTests.release.xcconfig"; path = "Target Support Files/Pods-ZemogaPostTests/Pods-ZemogaPostTests.release.xcconfig"; sourceTree = "<group>"; };
+		6A240AA0641E3ACF572BE568 /* Pods-ZemogaPostTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPostTests.debug.xcconfig"; path = "Target Support Files/Pods-ZemogaPostTests/Pods-ZemogaPostTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6FF5E020ACB6AB450250F378 /* Pods-ZemogaPost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.release.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.release.xcconfig"; sourceTree = "<group>"; };
+		8501C0E1FD32EEDEDCC70BDB /* Pods-ZemogaPost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.debug.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.debug.xcconfig"; sourceTree = "<group>"; };
+		9435BC5D00AEE4D793071934 /* Pods-ZemogaPost-ZemogaPostUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost-ZemogaPostUITests.release.xcconfig"; path = "Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B383B979A516D6C6C0D2813D /* Pods_ZemogaPostTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZemogaPostTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE547F892585741C004874D8 /* ZemogaPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZemogaPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE547F8C2585741C004874D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE547F8E2585741C004874D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +73,8 @@
 		BE80C8B325858DC100CB2A46 /* DetailPostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostPresenter.swift; sourceTree = "<group>"; };
 		BE80C8B82585915C00CB2A46 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		BE80C8BD258597C800CB2A46 /* DetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewCell.swift; sourceTree = "<group>"; };
+		DC40478B2023EAD8A173341E /* Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F9560E78D37485F5233EA766 /* Pods_ZemogaPost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZemogaPost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580F54F62AD4E88C7229010D /* Pods_ZemogaPost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98716475669392D6051CA91 /* Pods_ZemogaPostTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +98,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC69D5F0BA1B860F7B3DC4BB /* Pods_ZemogaPost_ZemogaPostUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		759188E905EBE9959E929FA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9560E78D37485F5233EA766 /* Pods_ZemogaPost.framework */,
+				23CB2D832A7D751F1A7C6BFE /* Pods_ZemogaPost_ZemogaPostUITests.framework */,
+				B383B979A516D6C6C0D2813D /* Pods_ZemogaPostTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BE547F802585741C004874D8 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +122,8 @@
 				BE547FA52585741E004874D8 /* ZemogaPostTests */,
 				BE547FB02585741E004874D8 /* ZemogaPostUITests */,
 				BE547F8A2585741C004874D8 /* Products */,
+				CB314A7FF5C80D232D432D03 /* Pods */,
+				759188E905EBE9959E929FA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +200,20 @@
 			path = DetailPost;
 			sourceTree = "<group>";
 		};
+		CB314A7FF5C80D232D432D03 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8501C0E1FD32EEDEDCC70BDB /* Pods-ZemogaPost.debug.xcconfig */,
+				6FF5E020ACB6AB450250F378 /* Pods-ZemogaPost.release.xcconfig */,
+				DC40478B2023EAD8A173341E /* Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig */,
+				9435BC5D00AEE4D793071934 /* Pods-ZemogaPost-ZemogaPostUITests.release.xcconfig */,
+				6A240AA0641E3ACF572BE568 /* Pods-ZemogaPostTests.debug.xcconfig */,
+				44BD077E3A884CE8DA455D2C /* Pods-ZemogaPostTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +221,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE547FB62585741F004874D8 /* Build configuration list for PBXNativeTarget "ZemogaPost" */;
 			buildPhases = (
+				47823315E5DE934C1C45A813 /* [CP] Check Pods Manifest.lock */,
 				BE547F852585741C004874D8 /* Sources */,
 				BE547F862585741C004874D8 /* Frameworks */,
 				BE547F872585741C004874D8 /* Resources */,
+				665B46D0B4D148CA0880745D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,6 +240,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE547FB92585741F004874D8 /* Build configuration list for PBXNativeTarget "ZemogaPostTests" */;
 			buildPhases = (
+				CEB788D0F498A54733E965EB /* [CP] Check Pods Manifest.lock */,
 				BE547F9E2585741E004874D8 /* Sources */,
 				BE547F9F2585741E004874D8 /* Frameworks */,
 				BE547FA02585741E004874D8 /* Resources */,
@@ -215,9 +259,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE547FBC2585741F004874D8 /* Build configuration list for PBXNativeTarget "ZemogaPostUITests" */;
 			buildPhases = (
+				E551CC84C35C1191777146B6 /* [CP] Check Pods Manifest.lock */,
 				BE547FA92585741E004874D8 /* Sources */,
 				BE547FAA2585741E004874D8 /* Frameworks */,
 				BE547FAB2585741E004874D8 /* Resources */,
+				3A74A2AE2FF9BC9443DBD4B2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -297,6 +343,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A74A2AE2FF9BC9443DBD4B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47823315E5DE934C1C45A813 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZemogaPost-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		665B46D0B4D148CA0880745D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEB788D0F498A54733E965EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZemogaPostTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E551CC84C35C1191777146B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZemogaPost-ZemogaPostUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE547F852585741C004874D8 /* Sources */ = {
@@ -485,6 +634,7 @@
 		};
 		BE547FB72585741F004874D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8501C0E1FD32EEDEDCC70BDB /* Pods-ZemogaPost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -503,6 +653,7 @@
 		};
 		BE547FB82585741F004874D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FF5E020ACB6AB450250F378 /* Pods-ZemogaPost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -521,6 +672,7 @@
 		};
 		BE547FBA2585741F004874D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A240AA0641E3ACF572BE568 /* Pods-ZemogaPostTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -542,6 +694,7 @@
 		};
 		BE547FBB2585741F004874D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44BD077E3A884CE8DA455D2C /* Pods-ZemogaPostTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -563,6 +716,7 @@
 		};
 		BE547FBD2585741F004874D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC40478B2023EAD8A173341E /* Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -582,6 +736,7 @@
 		};
 		BE547FBE2585741F004874D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9435BC5D00AEE4D793071934 /* Pods-ZemogaPost-ZemogaPostUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
