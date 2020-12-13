@@ -12,7 +12,7 @@ class PostPresenter: Presenter {
     weak private var postView : ServiceTableView?
     
     override init() {
-        
+        super.init()
     }
     
     func attachView(view: ServiceTableView) {

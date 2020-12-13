@@ -13,6 +13,6 @@ struct Post: Codable {
     var title: String?
     var body: String?
     var userId: Int?
-    var isFavorite: Bool = false
-    var isRead: Bool = false
+//    var isFavorite: Bool = false
+//    var isRead: Bool = false
 }

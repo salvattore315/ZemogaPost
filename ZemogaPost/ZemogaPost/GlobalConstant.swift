@@ -39,7 +39,8 @@ enum Environment: String {
 }
 
 func setUrl(domain:String, route:String) -> String {
-    return domain + route
+    apiUrl = domain + route
+    return apiUrl
 }
 
 //MARK: Parse the configuration name and initialize

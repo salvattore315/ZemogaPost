@@ -24,18 +24,69 @@ class PostViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(favoriteTapped))
         presenter.attachView(view: self)
+        
+        configureButton(button: allButton,
+                        corners: [.topLeft, .bottomLeft])
+        configureButton(button: favoriteButton,
+                        corners: [.topRight, .bottomRight])
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.getPost()    }
+        presenter.getPost()
+    }
     
     @objc private func favoriteTapped(){
         
     }
+    
+    @IBAction func tapButton(_ sender: UIButton) {
+        
+        if(sender == allButton) {
+            isSelectedButton(selected: true,
+                             button: allButton)
+            isSelectedButton(selected: false,
+                             button: favoriteButton)
+        } else {
+            isSelectedButton(selected: false,
+                             button: allButton)
+            isSelectedButton(selected: true,
+                             button: favoriteButton)
+        }
+    }
+    
+    private func setup() {
+        
+    }
+    
+    private func isSelectedButton(selected: Bool,
+                                  button: UIButton) {
+        if(selected) {
+            button.isSelected = selected
+            button.backgroundColor = .systemGreen
+        } else {
+            button.isSelected = selected
+            button.backgroundColor = .white
+        }
+    }
+    
+    private func configureButton(button: UIButton, corners: UIRectCorner) {
+        let path = UIBezierPath(roundedRect: button.bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: 4, height: 4))
+        
+        let maskLayer = CAShapeLayer()
+        
+        maskLayer.path = path.cgPath
+        button.layer.mask = maskLayer
+        
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemGreen.cgColor
+    }
 }
 
-extension PostViewController: UITableViewDataSource {
+extension PostViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -45,6 +96,10 @@ extension PostViewController: UITableViewDataSource {
         let post = posts[indexPath.row]
         cell.setup(post: post)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }
 }
 
@@ -56,6 +111,9 @@ extension PostViewController: ServiceTableView {
     
     func finishCallService() {
         tableView.reloadData()
+        
+        isSelectedButton(selected: true, button: allButton)
+        isSelectedButton(selected: false, button: favoriteButton)
     }
     
     func setArray(ObjectCodable: Array<Any>) {

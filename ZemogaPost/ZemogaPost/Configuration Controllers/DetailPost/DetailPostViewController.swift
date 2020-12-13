@@ -11,7 +11,7 @@ class DetailPostViewController: UIViewController {
     
     //MARKS: Variable & Outles
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     
     @IBOutlet weak var nameLabel: UILabel!

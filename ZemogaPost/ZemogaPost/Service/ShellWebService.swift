@@ -23,7 +23,7 @@ class ShellWebService : Service {
         
         switch service {
         case GlobalConstants.nameServices.getPost:
-            returnService(.get, GlobalConstants.Endpoints.post, JSONEncoding())
+            returnService(.get, GlobalConstants.Endpoints.post, URLEncoding())
             break
         default:
             break
@@ -67,7 +67,7 @@ class ShellWebService : Service {
             AF.request(url!, method: method,
                        parameters: parametersEdited,
                        encoding: typeEncoding,
-                       headers: headers).responseData(completionHandler: {response in
+                       headers: headers).responseJSON { (response) in
                         
                 if(response.data != nil) {
                     withCompletionBlock(response.data, nil)
@@ -77,7 +77,7 @@ class ShellWebService : Service {
                                         userInfo: ["message": "something bad"])
                     withCompletionBlock(nil, error)
                 }
-            })
+            }
         })//SelectWebService
     }//Function
 }

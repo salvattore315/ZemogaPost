@@ -27,8 +27,8 @@ class PostTableViewCell: UITableViewCell {
     
     public func setup(post: Post) {
         self.postLabel.text = post.title
-        self.favoriteImageView.isHidden = post.isFavorite
-        self.circleBlueImageView.isHidden = post.isRead
+//        self.favoriteImageView.isHidden = post.isFavorite
+//        self.circleBlueImageView.isHidden = post.isRead
     }
 
 }
