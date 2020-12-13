@@ -6,6 +6,7 @@
 //
 import Foundation
 import Alamofire
+import RealmSwift
 
 
 extension JSONDecoder {

@@ -14,6 +14,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var notFoundPostLabel: UILabel!
     
     private var posts: [Post] = []
     private let presenter = PostPresenter()
@@ -24,7 +25,7 @@ class PostViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
-                                                            action: #selector(favoriteTapped))
+                                                            action: #selector(refreshTapped))
         presenter.attachView(view: self)
         
         configureButton(button: allButton,
@@ -32,15 +33,25 @@ class PostViewController: UIViewController {
         configureButton(button: favoriteButton,
                         corners: [.topRight, .bottomRight])
         
+        presenter.isSavedPosts() ? presenter.getAllPost() : presenter.getPostsService()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.getPost()
+        
     }
     
-    @objc private func favoriteTapped(){
+    private func setup() {
         
+    }
+    
+    @objc private func refreshTapped(){
+        presenter.getPostsService()
+        isSelectedButton(selected: true,
+                         button: allButton)
+        isSelectedButton(selected: false,
+                         button: favoriteButton)
     }
     
     @IBAction func tapButton(_ sender: UIButton) {
@@ -58,7 +69,14 @@ class PostViewController: UIViewController {
         }
     }
     
-    private func setup() {
+    @IBAction func deleteAll(_ sender: UIButton) {
+        presenter.deleteAllPost()
+        presenter.getAllPost()
+        
+        isSelectedButton(selected: true,
+                         button: allButton)
+        isSelectedButton(selected: false,
+                         button: favoriteButton)
         
     }
     
@@ -115,7 +133,6 @@ extension PostViewController: ServiceTableView {
     }
     
     func finishCallService() {
-        tableView.reloadData()
         
         isSelectedButton(selected: true,
                          button: allButton)
@@ -129,6 +146,14 @@ extension PostViewController: ServiceTableView {
         }
         
         self.posts = objectReady
+        tableView.reloadData()
+        if(posts.isEmpty) {
+            self.tableView.isHidden = true
+            self.notFoundPostLabel.isHidden = false
+        } else {
+            self.tableView.isHidden = false
+            self.notFoundPostLabel.isHidden = true
+        }
     }
     
     func setEmpty() {
