@@ -43,7 +43,6 @@ func setUrl(domain:String, route:String) -> String {
     return apiUrl
 }
 
-//MARK: Parse the configuration name and initialize
 struct Configuration {
     var environment: Environment = {
         if let configuration = Bundle.main.object(forInfoDictionaryKey: "Configuration") as? String {
@@ -58,6 +57,11 @@ struct GlobalConstants {
     //MARK: Configuring the environment
     private static let baseUrl = apiUrl
     
+    //MARK: - Keys
+    struct Keys{
+        static let savePostSelected = "savePostSelected"
+    }
+    
     //MARK: ENDPOINTS
     struct Endpoints {
         static let post = baseUrl+"posts"
@@ -71,13 +75,11 @@ struct GlobalConstants {
         }
     }
     
+    //MARK: Headers
     struct Headers {
         static let contentType = "application/json"
     }
-
-    struct Keys{
-        static let sessionUser = "sessionUser"
-    }
+    
     //MARK: - API SERVICES
     struct nameServices {
         static let getPost = "post"

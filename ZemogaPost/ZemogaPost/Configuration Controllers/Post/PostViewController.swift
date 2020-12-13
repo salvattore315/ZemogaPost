@@ -22,7 +22,9 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(favoriteTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(favoriteTapped))
         presenter.attachView(view: self)
         
         configureButton(button: allButton,
@@ -92,13 +94,16 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell",
+                                                 for: indexPath) as! PostTableViewCell
         let post = posts[indexPath.row]
         cell.setup(post: post)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        presenter.savePostSelected(post: post)
         self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }
 }
@@ -112,8 +117,10 @@ extension PostViewController: ServiceTableView {
     func finishCallService() {
         tableView.reloadData()
         
-        isSelectedButton(selected: true, button: allButton)
-        isSelectedButton(selected: false, button: favoriteButton)
+        isSelectedButton(selected: true,
+                         button: allButton)
+        isSelectedButton(selected: false,
+                         button: favoriteButton)
     }
     
     func setArray(ObjectCodable: Array<Any>) {

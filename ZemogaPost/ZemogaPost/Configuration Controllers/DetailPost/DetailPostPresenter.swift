@@ -11,6 +11,7 @@ import Foundation
 protocol ServiceDetailPostView: ServiceTableView {
     func setUser(user: User)
     func setComments(comments: [Comment])
+    func setDescription(description: String)
 }
 
 class DetailPostPresenter: Presenter {
@@ -27,6 +28,12 @@ class DetailPostPresenter: Presenter {
     
     public func detachView() {
         detailPostView = nil
+    }
+    
+    public func getDescription() {
+        if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
+            self.detailPostView?.setDescription(description: post.body ?? "")
+        }
     }
     
     public func getService() {

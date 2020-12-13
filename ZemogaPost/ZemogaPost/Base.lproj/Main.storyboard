@@ -425,7 +425,7 @@
                     <navigationItem key="navigationItem" id="vM1-9R-ap9"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="K4D-fJ-783" id="KbH-Io-szL"/>
-                        <outlet property="descriptionTextView" destination="g5P-Wl-NOu" id="ksg-yC-EKO"/>
+                        <outlet property="descriptionPostLabel" destination="g5P-Wl-NOu" id="sdv-6Q-Pz5"/>
                         <outlet property="emailLabel" destination="QSj-GS-YPL" id="7EQ-V8-SU9"/>
                         <outlet property="emailUserLabel" destination="1eH-km-02j" id="oG5-su-Mgu"/>
                         <outlet property="nameLabel" destination="K0o-5j-3TK" id="WtO-RB-vAs"/>
