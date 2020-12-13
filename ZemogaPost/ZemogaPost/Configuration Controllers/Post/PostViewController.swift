@@ -14,17 +14,18 @@ class PostViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var notFoundPostLabel: UILabel!
     
     private var posts: [Post] = []
     private let presenter = PostPresenter()
     
-    //MARKS: Circle of life
+    //MARK: - Circle of life
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
-                                                            action: #selector(favoriteTapped))
+                                                            action: #selector(refreshTapped))
         presenter.attachView(view: self)
         
         configureButton(button: allButton,
@@ -32,15 +33,27 @@ class PostViewController: UIViewController {
         configureButton(button: favoriteButton,
                         corners: [.topRight, .bottomRight])
         
+        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.getPost()
+        presenter.isSavedPosts() ? presenter.getAllPost() : presenter.getPostsService()
     }
     
-    @objc private func favoriteTapped(){
+    //MARK: - Setup
+    private func setup() {
         
+    }
+    
+    //MARK: - Actions
+    @objc private func refreshTapped(){
+        presenter.getPostsService()
+        isSelectedButton(selected: true,
+                         button: allButton)
+        isSelectedButton(selected: false,
+                         button: favoriteButton)
     }
     
     @IBAction func tapButton(_ sender: UIButton) {
@@ -58,7 +71,14 @@ class PostViewController: UIViewController {
         }
     }
     
-    private func setup() {
+    @IBAction func deleteAll(_ sender: UIButton) {
+        presenter.deleteAllPost()
+        presenter.getAllPost()
+        
+        isSelectedButton(selected: true,
+                         button: allButton)
+        isSelectedButton(selected: false,
+                         button: favoriteButton)
         
     }
     
@@ -97,13 +117,14 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell",
                                                  for: indexPath) as! PostTableViewCell
         let post = posts[indexPath.row]
-        cell.setup(post: post)
+        cell.setup(post: post, index: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.row]
         presenter.savePostSelected(post: post)
+        presenter.isReaded(idPost: post.id.value!)
         self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }
 }
@@ -115,7 +136,6 @@ extension PostViewController: ServiceTableView {
     }
     
     func finishCallService() {
-        tableView.reloadData()
         
         isSelectedButton(selected: true,
                          button: allButton)
@@ -129,13 +149,21 @@ extension PostViewController: ServiceTableView {
         }
         
         self.posts = objectReady
+        tableView.reloadData()
+        setEmpty()
     }
     
     func setEmpty() {
-        
+        if(posts.isEmpty) {
+            self.tableView.isHidden = true
+            self.notFoundPostLabel.isHidden = false
+        } else {
+            self.tableView.isHidden = false
+            self.notFoundPostLabel.isHidden = true
+        }
     }
     
     func setError(error: String?) {
-        
+        setEmpty()
     }
 }

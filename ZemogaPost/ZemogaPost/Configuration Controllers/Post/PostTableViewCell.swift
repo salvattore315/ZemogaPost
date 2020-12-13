@@ -25,10 +25,13 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setup(post: Post) {
+    public func setup(post: Post, index: Int) {
         self.postLabel.text = post.title
-//        self.favoriteImageView.isHidden = post.isFavorite
-//        self.circleBlueImageView.isHidden = post.isRead
+        //self.favoriteImageView.isHidden = !(post.internalInformation.isFavorite.value)
+        if(index < 20){
+          //  self.circleBlueImageView.isHidden = post.internalInformation.isRead.value
+        } else {
+            self.circleBlueImageView.isHidden = true
+        }
     }
-
 }

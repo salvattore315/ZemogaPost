@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Foundation
+import RealmSwift
 
 protocol ServiceDetailPostView: ServiceTableView {
     func setUser(user: User)
@@ -18,6 +18,7 @@ class DetailPostPresenter: Presenter {
     
     weak private var detailPostView : ServiceDetailPostView?
     
+    //MARK: - Init Presenter
     override init() {
         super.init()
     }
@@ -36,6 +37,7 @@ class DetailPostPresenter: Presenter {
         }
     }
     
+    //MARK: - Service
     public func getService() {
         getUser()
     }
@@ -64,19 +66,48 @@ class DetailPostPresenter: Presenter {
     public func getComments() {
         service.callServiceObject(parameters: nil, service: GlobalConstants.nameServices.getCommentsOfPost) { [self] (data, error) in
             if error != nil {
-                
+                self.detailPostView?.setError(error: "")
             }
             
             if data != nil {
                 if let comments: [Comment] = JSONDecoder().decodeResponse(from: data){
                     print(comments)
                     self.detailPostView?.setComments(comments: comments)
-                    
+                    self.detailPostView?.finishCallService()
                 } else {
-                    
+                    self.detailPostView?.setError(error: "")
                 }
-                self.detailPostView?.finishCallService()
             }
+        }
+    }
+    
+    //MARK: - Favorite
+    public func setReadPost() {
+        if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
+            let postReal = getPostRealm(idPost: post.id.value!)
+           // postReal?.internalInformation.isFavorite.value = !(postReal?.internalInformation.isFavorite.value! ?? false)
+            savePost(post: postReal!)
+        }
+    }
+    
+    public func isPostFavorite(idPost: Int) -> Bool {
+        let post = getPostRealm(idPost: idPost)
+        //return post?.internalInformation?.isFavorite.value
+        return false
+    }
+    
+    //MARK: - Realm
+    public func getPostRealm(idPost: Int) -> Post? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(idPost)")
+        let resultPost = realm.objects(Post.self).filter(predicate)
+        return resultPost.first
+    }
+    
+    public func savePost(post: Post) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(post, update: .modified)
         }
     }
 }
