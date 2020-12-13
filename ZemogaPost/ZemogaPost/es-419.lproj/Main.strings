@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "*salva@gmail.com*"; ObjectID = "1eH-km-02j"; */
+"1eH-km-02j.text" = "*salva@gmail.com*";
+
+/* Class = "UIButton"; normalTitle = "*Favorite*"; ObjectID = "9Dh-Dp-h8e"; */
+"9Dh-Dp-h8e.normalTitle" = "*Favorite*";
+
+/* Class = "UILabel"; text = "*Phone*"; ObjectID = "Cch-7q-CWS"; */
+"Cch-7q-CWS.text" = "*Phone*";
+
+/* Class = "UILabel"; text = "*Website*"; ObjectID = "DxA-UY-EDK"; */
+"DxA-UY-EDK.text" = "*Website*";
+
+/* Class = "UIButton"; normalTitle = "*Delete All*"; ObjectID = "HF8-TN-7Zw"; */
+"HF8-TN-7Zw.normalTitle" = "*Delete All*";
+
+/* Class = "UIButton"; normalTitle = "*All*"; ObjectID = "HMy-Xb-hGb"; */
+"HMy-Xb-hGb.normalTitle" = "*All*";
+
+/* Class = "UILabel"; text = "*User*"; ObjectID = "HdS-SO-HDc"; */
+"HdS-SO-HDc.text" = "*User*";
+
+/* Class = "UILabel"; text = "*Name*"; ObjectID = "K0o-5j-3TK"; */
+"K0o-5j-3TK.text" = "*Name*";
+
+/* Class = "UILabel"; text = "*Description*"; ObjectID = "K4D-fJ-783"; */
+"K4D-fJ-783.text" = "*Description*";
+
+/* Class = "UILabel"; text = "*+5666565656*"; ObjectID = "O6w-q7-StI"; */
+"O6w-q7-StI.text" = "*+5666565656*";
+
+/* Class = "UILabel"; text = "*Email*"; ObjectID = "QSj-GS-YPL"; */
+"QSj-GS-YPL.text" = "*Email*";
+
+/* Class = "UILabel"; text = "*www.zemogita.com*"; ObjectID = "UFG-hY-uQh"; */
+"UFG-hY-uQh.text" = "*www.zemogita.com*";
+
+/* Class = "UITextView"; text = "*Descripcion de todo lo que se tiene que ver*"; ObjectID = "b7b-tw-XiQ"; */
+"b7b-tw-XiQ.text" = "*Descripcion de todo lo que se tiene que ver*";
+
+/* Class = "UINavigationItem"; title = "*Post*"; ObjectID = "eAl-dg-t2t"; */
+"eAl-dg-t2t.title" = "*Post*";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "g7H-mz-D4Z"; */
+"g7H-mz-D4Z.text" = "Label";
+
+/* Class = "UILabel"; text = "*COMMENTS*"; ObjectID = "mic-U9-8Il"; */
+"mic-U9-8Il.text" = "*COMMENTS*";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rPF-dR-kks"; */
+"rPF-dR-kks.text" = "Label";
+
+/* Class = "UILabel"; text = "*Salvador*"; ObjectID = "uqe-gt-sy3"; */
+"uqe-gt-sy3.text" = "*Salvador*";

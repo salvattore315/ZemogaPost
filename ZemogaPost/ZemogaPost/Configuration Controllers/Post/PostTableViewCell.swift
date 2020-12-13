@@ -24,5 +24,11 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    public func setup(post: Post) {
+        self.postLabel.text = post.title
+//        self.favoriteImageView.isHidden = post.isFavorite
+//        self.circleBlueImageView.isHidden = post.isRead
+    }
 
 }
