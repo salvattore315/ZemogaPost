@@ -22,5 +22,9 @@ class DetailPostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    public func setup(comment: Comment) {
+        self.commentLabel.text = comment.body
+    }
 
 }

@@ -30,6 +30,8 @@
 		BE80C8B425858DC100CB2A46 /* DetailPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80C8B325858DC100CB2A46 /* DetailPostPresenter.swift */; };
 		BE80C8B92585915C00CB2A46 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80C8B82585915C00CB2A46 /* PostTableViewCell.swift */; };
 		BE80C8BE258597C800CB2A46 /* DetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80C8BD258597C800CB2A46 /* DetailPostTableViewCell.swift */; };
+		BEC55E422586755E007CF7D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E412586755E007CF7D2 /* User.swift */; };
+		BEC55E4725867573007CF7D2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E4625867573007CF7D2 /* Comment.swift */; };
 		C19A4BFA219F64E8AB578348 /* Pods_ZemogaPost_ZemogaPostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390C1BBFF37F0944728C9ABB /* Pods_ZemogaPost_ZemogaPostUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,8 @@
 		BE80C8B325858DC100CB2A46 /* DetailPostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostPresenter.swift; sourceTree = "<group>"; };
 		BE80C8B82585915C00CB2A46 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		BE80C8BD258597C800CB2A46 /* DetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewCell.swift; sourceTree = "<group>"; };
+		BEC55E412586755E007CF7D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BEC55E4625867573007CF7D2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C220B23DE0874666AC8B77BA /* Pods-ZemogaPost.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.development.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.development.xcconfig"; sourceTree = "<group>"; };
 		C40D351657B3E4EADCA12CF8 /* Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD54A447C2D460EBDDB490EC /* Pods-ZemogaPost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.release.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				BE26E7B92585CEB40086C66B /* Post.swift */,
+				BEC55E412586755E007CF7D2 /* User.swift */,
+				BEC55E4625867573007CF7D2 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -504,6 +510,8 @@
 				BE80C8A225858C0F00CB2A46 /* PostPresenter.swift in Sources */,
 				BE26E7AD2585C4BF0086C66B /* BaseViewController.swift in Sources */,
 				BE547F8D2585741C004874D8 /* AppDelegate.swift in Sources */,
+				BEC55E4725867573007CF7D2 /* Comment.swift in Sources */,
+				BEC55E422586755E007CF7D2 /* User.swift in Sources */,
 				BE80C8B425858DC100CB2A46 /* DetailPostPresenter.swift in Sources */,
 				BE547F8F2585741C004874D8 /* SceneDelegate.swift in Sources */,
 				BE26E7B22585C5BE0086C66B /* Presenter.swift in Sources */,

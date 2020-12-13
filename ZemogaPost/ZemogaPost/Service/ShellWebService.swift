@@ -25,6 +25,12 @@ class ShellWebService : Service {
         case GlobalConstants.nameServices.getPost:
             returnService(.get, GlobalConstants.Endpoints.post, URLEncoding())
             break
+        case GlobalConstants.nameServices.getUser:
+            returnService(.get, GlobalConstants.Endpoints.getUser(userId: "1"), URLEncoding())
+            break
+        case GlobalConstants.nameServices.getCommentsOfPost:
+            returnService(.get, GlobalConstants.Endpoints.getCommentsOfPost(postId: "1"), URLEncoding())
+            break
         default:
             break
         }

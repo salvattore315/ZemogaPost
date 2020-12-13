@@ -61,6 +61,14 @@ struct GlobalConstants {
     //MARK: ENDPOINTS
     struct Endpoints {
         static let post = baseUrl+"posts"
+        
+        static func getUser(userId: String) -> String {
+            return baseUrl + "users?id=" + userId
+        }
+        
+        static func getCommentsOfPost(postId: String) -> String {
+            return baseUrl + "posts/" + postId + "/comments"
+        }
     }
     
     struct Headers {
@@ -73,8 +81,8 @@ struct GlobalConstants {
     //MARK: - API SERVICES
     struct nameServices {
         static let getPost = "post"
-        static let detailPost = "detailPost"
-
+        static let getUser = "getUser"
+        static let getCommentsOfPost = "getCommentsOfPost"
     }
     
 }
