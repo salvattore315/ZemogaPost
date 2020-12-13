@@ -25,16 +25,29 @@ class PostPresenter: Presenter {
         postView = nil
     }
     
-    public func isSavedPosts() -> Bool {
-        let realm = try! Realm()
-        let resultPost = realm.objects(Post.self)
-        return resultPost.count > 0
-    }
-    
+
     //MARK: - UserDefault
     public func savePostSelected(post: Post) {
         SessionManager.saveCodableInSession(codable: post.encode(),
                                             key: GlobalConstants.Keys.savePostSelected)
+    }
+    
+    public func isReaded(idPost: Int) {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(idPost)")
+        let resultPost = realm.objects(Post.self).filter(predicate)
+        let post = resultPost.first
+        
+        post?.internalInformation?.isRead = true
+        
+        try! realm.write {
+            post?.internalInformation?.isRead = true
+            post?.title = "que pasadoo salvador"
+            realm.add(post!, update: .all)
+        }
+        
+        let put = getPostRealm(idPost: idPost)
+        print("ighi")
     }
     
     //MARK: - Service
@@ -48,10 +61,7 @@ class PostPresenter: Presenter {
             if data != nil {
                 if let posts: [Post] = JSONDecoder().decodeResponse(from: data){
                     print(posts)
-                    let realm = try! Realm()
-                    try! realm.write {
-                        realm.add(posts)
-                    }
+                    saveAllPost(posts: posts)
                     getAllPost()
                     self.postView?.finishCallService()
                 }
@@ -60,6 +70,33 @@ class PostPresenter: Presenter {
     }
     
     //MARK: - Realm
+    public func isSavedPosts() -> Bool {
+        let realm = try! Realm()
+        let resultPost = realm.objects(Post.self)
+        return resultPost.count > 0
+    }
+    
+    public func saveAllPost(posts: [Post]) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(posts)
+        }
+    }
+    
+    public func savePost(post: Post) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(post, update: .all)
+        }
+    }
+    
+    public func setPostReaded(post: Post) {
+        let realm = try! Realm()
+            try! realm.write {
+                post.internalInformation?.isRead = true
+        }
+    }
+    
     public func getAllPost() {
         let realm = try! Realm()
         let resultPost = realm.objects(Post.self)
@@ -72,6 +109,13 @@ class PostPresenter: Presenter {
         let resultPost = realm.objects(Post.self)
         
         self.postView?.setArray(ObjectCodable: resultPost.map({$0}))
+    }
+    
+    public func getPostRealm(idPost: Int) -> Post? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(idPost)")
+        let resultPost = realm.objects(Post.self).filter(predicate)
+        return resultPost.first
     }
     
     public func deleteAllPost() {

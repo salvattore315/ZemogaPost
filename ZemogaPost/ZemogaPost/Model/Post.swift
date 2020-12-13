@@ -13,6 +13,14 @@ class Post: Object, Codable {
     @objc dynamic var title: String?
     @objc dynamic var body: String?
     var userId = RealmOptional<Int>()
-//    @objc dynamic var isFavorite: Bool = false
- //   var isRead = RealmOptional<Bool>(false)
+    @objc dynamic var internalInformation: InternalInformation? = InternalInformation()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+class InternalInformation: Object, Codable {
+    @objc dynamic var isRead: Bool = false
+    @objc dynamic var isFavorite: Bool = false
 }

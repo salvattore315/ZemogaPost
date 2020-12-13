@@ -46,7 +46,7 @@ class DetailPostViewController: UIViewController {
     }
     
     @objc private func favoriteTapped(){
-        
+        presenter.setReadPost()
     }
 }
 

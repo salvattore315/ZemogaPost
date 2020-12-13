@@ -19,7 +19,7 @@ class PostViewController: UIViewController {
     private var posts: [Post] = []
     private let presenter = PostPresenter()
     
-    //MARKS: Circle of life
+    //MARK: - Circle of life
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,19 +33,21 @@ class PostViewController: UIViewController {
         configureButton(button: favoriteButton,
                         corners: [.topRight, .bottomRight])
         
-        presenter.isSavedPosts() ? presenter.getAllPost() : presenter.getPostsService()
+        
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        presenter.isSavedPosts() ? presenter.getAllPost() : presenter.getPostsService()
     }
     
+    //MARK: - Setup
     private func setup() {
         
     }
     
+    //MARK: - Actions
     @objc private func refreshTapped(){
         presenter.getPostsService()
         isSelectedButton(selected: true,
@@ -115,13 +117,14 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell",
                                                  for: indexPath) as! PostTableViewCell
         let post = posts[indexPath.row]
-        cell.setup(post: post)
+        cell.setup(post: post, index: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.row]
         presenter.savePostSelected(post: post)
+        presenter.isReaded(idPost: post.id.value!)
         self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }
 }
@@ -147,6 +150,10 @@ extension PostViewController: ServiceTableView {
         
         self.posts = objectReady
         tableView.reloadData()
+        setEmpty()
+    }
+    
+    func setEmpty() {
         if(posts.isEmpty) {
             self.tableView.isHidden = true
             self.notFoundPostLabel.isHidden = false
@@ -156,11 +163,7 @@ extension PostViewController: ServiceTableView {
         }
     }
     
-    func setEmpty() {
-        
-    }
-    
     func setError(error: String?) {
-        
+        setEmpty()
     }
 }

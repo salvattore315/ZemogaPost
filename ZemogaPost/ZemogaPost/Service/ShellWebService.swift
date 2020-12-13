@@ -28,14 +28,14 @@ class ShellWebService : Service {
         case GlobalConstants.nameServices.getUser:
             var userId = ""
             if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
-                //userId = String(post.userId.value ?? 0)
+                userId = String(post.userId.value ?? 0)
             }
             returnService(.get, GlobalConstants.Endpoints.getUser(userId: userId), URLEncoding())
             break
         case GlobalConstants.nameServices.getCommentsOfPost:
             var postId = ""
             if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
-                //postId = String(post.id.value ?? 0)
+                postId = String(post.id.value ?? 0)
             }
             returnService(.get, GlobalConstants.Endpoints.getCommentsOfPost(postId: postId), URLEncoding())
             break
