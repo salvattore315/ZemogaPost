@@ -6,13 +6,11 @@ PODS:
   - Realm/Headers (10.4.0)
   - RealmSwift (10.4.0):
     - Realm (= 10.4.0)
-  - SwiftGen (6.4.0)
 
 DEPENDENCIES:
   - Alamofire
   - KVNProgress
   - RealmSwift
-  - SwiftGen (~> 6.0)
 
 SPEC REPOS:
   trunk:
@@ -20,15 +18,13 @@ SPEC REPOS:
     - KVNProgress
     - Realm
     - RealmSwift
-    - SwiftGen
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   KVNProgress: d7046cce142f1aeb740db39dc3cacfe910fac354
   Realm: d8466b2238f034a5ff7a031aed63b7dacdf0dd10
   RealmSwift: 37a93ae742667948cc094a3c6ae3d006db32b66f
-  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
 
-PODFILE CHECKSUM: 15b45a47ab3ccf896e44339c21ee27fd572d2a78
+PODFILE CHECKSUM: 82cc4eaa1a3c8809d320d5d2456a3a375da3ea0f
 
 COCOAPODS: 1.10.0
