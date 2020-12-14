@@ -1,0 +1,22 @@
+/* 
+  localizable.strings
+  ZemogaPost
+
+  Created by Salvador Martinez on 13/12/20.
+  
+*/
+
+"post" = "Post";
+"all" = "All";
+"favorites" = "Favorites";
+"deleteButton" = "Delete All";
+"noPosts" = "No post was found";
+
+"description" = "Description";
+"user" = "User";
+"comments" = "Comments";
+"name" = "Name";
+"email" = "Email";
+"phone" = "Phone";
+"website" = "Website";
+"noComments" = "No comments was found";

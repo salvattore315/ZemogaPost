@@ -24,7 +24,9 @@ class DetailPostViewController: UIViewController {
     @IBOutlet weak var phoneUserLabel: UILabel!
     @IBOutlet weak var websiteUserLabel: UILabel!
  
+    @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noCommentsLabel: UILabel!
     
     private var comments: [Comment] = []
     private var user: User = User()
@@ -33,16 +35,36 @@ class DetailPostViewController: UIViewController {
     //MARKS: Circle of life
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(favoriteTapped))
+        let item = UIBarButtonItem(image: UIImage(systemName: "star"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(favoriteTapped))
+        item.tintColor = .systemYellow
+        navigationItem.rightBarButtonItem = item
+        
         presenter.attachView(view: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setup()
         presenter.getDescription()
         presenter.getService()
         
+    }
+    
+    //MARK: - Setup
+    private func setup() {
+        navigationItem.title = "post".localized
+        descriptionLabel.text = "description".localized
+        userLabel.text = "user".localized
+        
+        nameLabel.text = "name".localized
+        emailLabel.text = "email".localized
+        phoneLabel.text = "phone".localized
+        websiteLabel.text = "website".localized
+        
+        commentsLabel.text = "comments".localized
     }
     
     @objc private func favoriteTapped(){
@@ -77,7 +99,13 @@ extension DetailPostViewController: ServiceDetailPostView {
     }
     
     func setEmpty() {
-        
+        if(comments.isEmpty) {
+            tableView.isHidden = true
+            noCommentsLabel.isHidden = false
+        } else {
+            tableView.isHidden = false
+            noCommentsLabel.isHidden = true
+        }
     }
     
     func setError(error: String?) {
@@ -96,6 +124,7 @@ extension DetailPostViewController: ServiceDetailPostView {
     func setComments(comments: [Comment]) {
         self.comments = comments
         tableView.reloadData()
+        setEmpty() 
     }
         
     func setArray(ObjectCodable: Array<Any>) {

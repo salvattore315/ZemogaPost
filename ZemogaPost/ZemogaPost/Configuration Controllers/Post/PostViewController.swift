@@ -23,28 +23,34 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise.icloud"),
+                                                            style: .plain,
                                                             target: self,
                                                             action: #selector(refreshTapped))
         presenter.attachView(view: self)
         
-        configureButton(button: allButton,
-                        corners: [.topLeft, .bottomLeft])
-        configureButton(button: favoriteButton,
-                        corners: [.topRight, .bottomRight])
-        
-        
-    
+        configureButton(button: allButton)
+        configureButton(button: favoriteButton)
+        isSelectedButton(selected: true,
+                         button: allButton)
+        isSelectedButton(selected: false,
+                         button: favoriteButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setup()
         presenter.isSavedPosts() ? presenter.getAllPost() : presenter.getPostsService()
+        
     }
     
     //MARK: - Setup
     private func setup() {
-        
+        deleteButton.setTitle("deleteButton".localized, for: .normal)
+        allButton.setTitle("all".localized, for: .normal)
+        favoriteButton.setTitle("favorites".localized, for: .normal)
+        navigationItem.title = "post".localized
+        notFoundPostLabel.text = "noPosts".localized
     }
     
     //MARK: - Actions
@@ -93,16 +99,8 @@ class PostViewController: UIViewController {
         }
     }
     
-    private func configureButton(button: UIButton, corners: UIRectCorner) {
-        let path = UIBezierPath(roundedRect: button.bounds,
-                                byRoundingCorners: corners,
-                                cornerRadii: CGSize(width: 4, height: 4))
-        
-        let maskLayer = CAShapeLayer()
-        
-        maskLayer.path = path.cgPath
-        button.layer.mask = maskLayer
-        
+    private func configureButton(button: UIButton) {
+        button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemGreen.cgColor
     }
@@ -125,6 +123,7 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate{
         let post = posts[indexPath.row]
         presenter.savePostSelected(post: post)
         presenter.isReaded(idPost: post.id.value!)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }
 }
