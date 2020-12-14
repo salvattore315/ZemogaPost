@@ -20,3 +20,8 @@
 "phone" = "Phone";
 "website" = "Website";
 "noComments" = "No comments was found";
+
+"loading" = "Loading...";
+"error" = "Error";
+"done" = "Done";
+"success" = "Success";

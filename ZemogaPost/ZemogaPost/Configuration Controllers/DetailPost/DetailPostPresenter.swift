@@ -12,6 +12,7 @@ protocol ServiceDetailPostView: ServiceTableView {
     func setUser(user: User)
     func setComments(comments: [Comment])
     func setDescription(description: String)
+    func changeFavoriteButton(isFavorite: Bool)
 }
 
 class DetailPostPresenter: Presenter {
@@ -31,18 +32,30 @@ class DetailPostPresenter: Presenter {
         detailPostView = nil
     }
     
+    //MARK: - Actions
     public func getDescription() {
         if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
             self.detailPostView?.setDescription(description: post.body ?? "")
         }
     }
     
-    //MARK: - Service
-    public func getService() {
-        getUser()
+    public func setFavoritePostInRealm(idPost: Int) {
+            let realm = try! Realm()
+            let predicate = NSPredicate(format: "id == \(idPost)")
+            let resultPost = realm.objects(Post.self).filter(predicate)
+            let post = resultPost.first
+            try! realm.write {
+                post?.isFavorite = !(post?.isFavorite ?? false)
+            }
+        self.detailPostView?.changeFavoriteButton(isFavorite: post?.isFavorite ?? false)
     }
     
-    public func getUser() {
+    //MARK: - Service
+    public func getService() {
+        getUserService()
+    }
+    
+    public func getUserService() {
         self.detailPostView?.startCallingService()
         service.callServiceObject(parameters: nil, service: GlobalConstants.nameServices.getUser) { [self] (data, error) in
             if error != nil {
@@ -54,7 +67,7 @@ class DetailPostPresenter: Presenter {
                     print(users)
                     if(!users.isEmpty){
                         self.detailPostView?.setUser(user: users[0])
-                        getComments()
+                        getCommentsService()
                     } else {
                         
                     }
@@ -63,7 +76,7 @@ class DetailPostPresenter: Presenter {
         }
     }
     
-    public func getComments() {
+    public func getCommentsService() {
         service.callServiceObject(parameters: nil, service: GlobalConstants.nameServices.getCommentsOfPost) { [self] (data, error) in
             if error != nil {
                 self.detailPostView?.setError(error: "")
@@ -81,33 +94,12 @@ class DetailPostPresenter: Presenter {
         }
     }
     
-    //MARK: - Favorite
-    public func setReadPost() {
-        if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
-            let postReal = getPostRealm(idPost: post.id.value!)
-           // postReal?.internalInformation.isFavorite.value = !(postReal?.internalInformation.isFavorite.value! ?? false)
-            savePost(post: postReal!)
-        }
-    }
-    
-    public func isPostFavorite(idPost: Int) -> Bool {
-        let post = getPostRealm(idPost: idPost)
-        //return post?.internalInformation?.isFavorite.value
-        return false
-    }
-    
     //MARK: - Realm
-    public func getPostRealm(idPost: Int) -> Post? {
+    public func getPostInRealm(idPost: Int) -> Post? {
         let realm = try! Realm()
         let predicate = NSPredicate(format: "id == \(idPost)")
         let resultPost = realm.objects(Post.self).filter(predicate)
         return resultPost.first
     }
-    
-    public func savePost(post: Post) {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(post, update: .modified)
-        }
-    }
+
 }

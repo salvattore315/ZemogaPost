@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import KVNProgress
 
-class PostViewController: UIViewController {
+class PostViewController: BaseViewController {
     
     //MARKS: Variables & outlet
     @IBOutlet weak var tableView: UITableView!
@@ -40,7 +41,7 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setup()
-        presenter.isSavedPosts() ? presenter.getAllPost() : presenter.getPostsService()
+        presenter.isSavedPostsInRealm() ? presenter.getAllPostInRealm() : presenter.getPostsService()
         
     }
     
@@ -55,6 +56,7 @@ class PostViewController: UIViewController {
     
     //MARK: - Actions
     @objc private func refreshTapped(){
+        presenter.deleteAllPostInRealm()
         presenter.getPostsService()
         isSelectedButton(selected: true,
                          button: allButton)
@@ -69,17 +71,19 @@ class PostViewController: UIViewController {
                              button: allButton)
             isSelectedButton(selected: false,
                              button: favoriteButton)
+            presenter.getAllPostInRealm()
         } else {
             isSelectedButton(selected: false,
                              button: allButton)
             isSelectedButton(selected: true,
                              button: favoriteButton)
+            presenter.getFavoritePostsInRealm()
         }
     }
     
     @IBAction func deleteAll(_ sender: UIButton) {
-        presenter.deleteAllPost()
-        presenter.getAllPost()
+        presenter.deleteAllPostInRealm()
+        presenter.getAllPostInRealm()
         
         isSelectedButton(selected: true,
                          button: allButton)
@@ -121,17 +125,29 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.row]
-        presenter.savePostSelected(post: post)
-        presenter.isReaded(idPost: post.id.value!)
+        presenter.savePostInUserDefault(post: post)
+        presenter.setReadedInRealm(idPost: post.id.value!)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if (editingStyle == .delete) {
+                let post = posts[indexPath.row]
+                presenter.deletePostInRealm(idPost: post.id.value!,
+                                          isAllSelected: self.allButton.isSelected)
+            }
+        }
 }
 
 extension PostViewController: ServiceTableView {
-    
+
     func startCallingService() {
-        
+        KVNProgress.show(50, status: "prueba", on: self.view)
     }
     
     func finishCallService() {
@@ -140,8 +156,9 @@ extension PostViewController: ServiceTableView {
                          button: allButton)
         isSelectedButton(selected: false,
                          button: favoriteButton)
+        KVNProgress.showSuccess(withStatus: "success".localized)
     }
-    
+        
     func setArray(ObjectCodable: Array<Any>) {
         guard let objectReady = ObjectCodable as? [Post] else {
             return
@@ -164,5 +181,6 @@ extension PostViewController: ServiceTableView {
     
     func setError(error: String?) {
         setEmpty()
+        KVNProgress.showSuccess(withStatus: "error".localized)
     }
 }

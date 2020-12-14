@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailPostViewController: UIViewController {
+class DetailPostViewController: BaseViewController {
     
     //MARKS: Variable & Outles
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -35,13 +35,16 @@ class DetailPostViewController: UIViewController {
     //MARKS: Circle of life
     override func viewDidLoad() {
         super.viewDidLoad()
-        let item = UIBarButtonItem(image: UIImage(systemName: "star"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(favoriteTapped))
-        item.tintColor = .systemYellow
-        navigationItem.rightBarButtonItem = item
-        
+        if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
+            let postRealm = presenter.getPostInRealm(idPost: post.id.value!)
+            let nameImage = (postRealm?.isFavorite ?? false) ? "star.fill" : "star"
+            let item = UIBarButtonItem(image: UIImage(systemName: nameImage),
+                                       style: .plain,
+                                       target: self,
+                                       action: #selector(favoriteTapped))
+            item.tintColor = .systemYellow
+            navigationItem.rightBarButtonItem = item
+        }
         presenter.attachView(view: self)
     }
     
@@ -68,7 +71,9 @@ class DetailPostViewController: UIViewController {
     }
     
     @objc private func favoriteTapped(){
-        presenter.setReadPost()
+        if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
+            presenter.setFavoritePostInRealm(idPost: post.id.value!)
+        }
     }
 }
 
@@ -86,6 +91,7 @@ extension DetailPostViewController: UITableViewDataSource {
 }
 
 extension DetailPostViewController: ServiceDetailPostView {
+    
     func setDescription(description: String) {
         self.descriptionPostLabel.text = description
     }
@@ -107,11 +113,7 @@ extension DetailPostViewController: ServiceDetailPostView {
             noCommentsLabel.isHidden = true
         }
     }
-    
-    func setError(error: String?) {
         
-    }
-    
     func setUser(user: User) {
         self.user = user
         
@@ -125,6 +127,22 @@ extension DetailPostViewController: ServiceDetailPostView {
         self.comments = comments
         tableView.reloadData()
         setEmpty() 
+    }
+    
+    func changeFavoriteButton(isFavorite: Bool) {
+        let item = UIBarButtonItem(image: UIImage(systemName: "start"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(favoriteTapped))
+        item.setBackgroundImage(UIImage(systemName: "star.fill"),
+                                for: .selected,
+                                barMetrics: .default)
+        item.tintColor = .systemYellow
+        navigationItem.rightBarButtonItem = item
+    }
+    
+    func setError(error: String?) {
+        
     }
         
     func setArray(ObjectCodable: Array<Any>) {
