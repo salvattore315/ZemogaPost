@@ -41,8 +41,8 @@ class PostViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setup()
-        presenter.isSavedPostsInRealm() ? presenter.getAllPostInRealm() : presenter.getPostsService()
-        
+        presenter.isSavedPostsInRealm() ? presenter.getAllPostInRealm() :
+                                          presenter.getPostsService()
     }
     
     //MARK: - Setup
@@ -147,7 +147,8 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate{
 extension PostViewController: ServiceTableView {
 
     func startCallingService() {
-        KVNProgress.show(50, status: "prueba", on: self.view)
+        KVNProgress.show(withStatus: "loading".localized,
+                         on: navigationController?.view)
     }
     
     func finishCallService() {
@@ -157,6 +158,14 @@ extension PostViewController: ServiceTableView {
         isSelectedButton(selected: false,
                          button: favoriteButton)
         KVNProgress.showSuccess(withStatus: "success".localized)
+    }
+    
+    func startDelete() {
+        KVNProgress.show(withStatus: "loading".localized, on: navigationController?.view)
+    }
+    
+    func finishDelete() {
+        KVNProgress.showSuccess(withStatus: "done".localized)
     }
         
     func setArray(ObjectCodable: Array<Any>) {
@@ -181,6 +190,6 @@ extension PostViewController: ServiceTableView {
     
     func setError(error: String?) {
         setEmpty()
-        KVNProgress.showSuccess(withStatus: "error".localized)
+        KVNProgress.showError(withStatus: "error".localized)
     }
 }

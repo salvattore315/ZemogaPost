@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KVNProgress
 
 class DetailPostViewController: BaseViewController {
     
@@ -32,7 +33,7 @@ class DetailPostViewController: BaseViewController {
     private var user: User = User()
     private let presenter = DetailPostPresenter()
     
-    //MARKS: Circle of life
+    //MARK: - Circle of life
     override func viewDidLoad() {
         super.viewDidLoad()
         if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
@@ -70,6 +71,7 @@ class DetailPostViewController: BaseViewController {
         commentsLabel.text = "comments".localized
     }
     
+    //MARK: - Actions
     @objc private func favoriteTapped(){
         if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
             presenter.setFavoritePostInRealm(idPost: post.id.value!)
@@ -97,23 +99,26 @@ extension DetailPostViewController: ServiceDetailPostView {
     }
     
     func startCallingService() {
-        
+        KVNProgress.show(withStatus: "loading".localized,
+                         on: navigationController?.view)
     }
     
     func finishCallService() {
-        
+        KVNProgress.showSuccess(withStatus: "success".localized)
     }
     
-    func setEmpty() {
-        if(comments.isEmpty) {
-            tableView.isHidden = true
-            noCommentsLabel.isHidden = false
-        } else {
-            tableView.isHidden = false
-            noCommentsLabel.isHidden = true
-        }
+    func changeFavoriteButton(isFavorite: Bool) {
+        let item = UIBarButtonItem(image: UIImage(systemName: "start"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(favoriteTapped))
+        item.setBackgroundImage(UIImage(systemName: "star.fill"),
+                                for: .selected,
+                                barMetrics: .default)
+        item.tintColor = .systemYellow
+        navigationItem.rightBarButtonItem = item
     }
-        
+            
     func setUser(user: User) {
         self.user = user
         
@@ -129,23 +134,31 @@ extension DetailPostViewController: ServiceDetailPostView {
         setEmpty() 
     }
     
-    func changeFavoriteButton(isFavorite: Bool) {
-        let item = UIBarButtonItem(image: UIImage(systemName: "start"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(favoriteTapped))
-        item.setBackgroundImage(UIImage(systemName: "star.fill"),
-                                for: .selected,
-                                barMetrics: .default)
-        item.tintColor = .systemYellow
-        navigationItem.rightBarButtonItem = item
+    func setEmpty() {
+        if(comments.isEmpty) {
+            tableView.isHidden = true
+            noCommentsLabel.isHidden = false
+        } else {
+            tableView.isHidden = false
+            noCommentsLabel.isHidden = true
+        }
     }
-    
-    func setError(error: String?) {
         
+    func setError(error: String?) {
+        setEmpty()
+        KVNProgress.showError {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
         
     func setArray(ObjectCodable: Array<Any>) {
+        
+    }
+    func startDelete() {
+        
+    }
+    
+    func finishDelete() {
         
     }
     

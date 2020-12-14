@@ -14,16 +14,16 @@ class HelperKVNProgress {
         
         let configuration = KVNProgressConfiguration.init()
         configuration.circleStrokeBackgroundColor = UIColor.white.withAlphaComponent(0.3)
-        configuration.circleStrokeForegroundColor = UIColor.white//GlobalConstants.Colors.fontColor
-        configuration.successColor = UIColor.white//GlobalConstants.Colors.fontColor
-        configuration.errorColor = UIColor.white//GlobalConstants.Colors.fontColor
+        configuration.circleStrokeForegroundColor = .systemGreen
+        configuration.successColor = .systemGreen
+        configuration.errorColor = .systemGreen
         configuration.isFullScreen = true
-        configuration.statusColor = UIColor.white//GlobalConstants.Colors.fontColor
-        configuration.backgroundFillColor = .systemBlue
+        configuration.statusColor = .systemGreen
+        configuration.backgroundFillColor = .white
         configuration.backgroundType = .solid
-        configuration.minimumDisplayTime = 3.0
-        configuration.minimumSuccessDisplayTime = 3.0
-        configuration.minimumErrorDisplayTime = 3.0
+        configuration.minimumDisplayTime = 1.0
+        configuration.minimumSuccessDisplayTime = 1.0
+        configuration.minimumErrorDisplayTime = 1.0
         KVNProgress.setConfiguration(configuration)
         
     }

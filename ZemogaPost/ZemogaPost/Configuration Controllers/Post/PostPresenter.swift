@@ -103,14 +103,17 @@ class PostPresenter: Presenter {
     
     //MARK: - Realm delete
     public func deleteAllPostInRealm() {
+        self.postView?.startDelete()
         let realm = try! Realm()
         try! realm.write {
             realm.deleteAll()
         }
+        self.postView?.finishDelete()
     }
     
     public func deletePostInRealm(idPost: Int,
                                 isAllSelected: Bool) {
+        self.postView?.startDelete()
         let post = getPostInRealm(idPost: idPost)
         let realm = try! Realm()
         try! realm.write {
@@ -121,5 +124,6 @@ class PostPresenter: Presenter {
         } else {
             getFavoritePostsInRealm()
         }
+        self.postView?.finishDelete()
     }
 }

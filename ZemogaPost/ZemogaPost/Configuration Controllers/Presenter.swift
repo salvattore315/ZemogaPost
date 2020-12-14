@@ -13,6 +13,8 @@ protocol ServiceTableView: NSObjectProtocol {
     func setArray(ObjectCodable: Array<Any>)
     func setEmpty()
     func setError(error: String?)
+    func startDelete()
+    func finishDelete()
 }
 
 class Presenter {
