@@ -12,8 +12,8 @@ or
 
 git clone https://github.com/salvattore315/ZemogaPost.git
 ```
-
-2) Run cocoaPod
+2) Use branch develop
+3) Run cocoaPod
 
 CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website.
 
@@ -21,8 +21,8 @@ CocoaPods is a dependency manager for Cocoa projects. For usage and installation
 Pod install
 ```
 
-3) Select the scheme dev
-4) Enjoy
+4) Select the scheme dev
+5) Enjoy
 
 ## Architecture
 
