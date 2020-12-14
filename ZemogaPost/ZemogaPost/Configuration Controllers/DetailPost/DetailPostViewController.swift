@@ -32,19 +32,22 @@ class DetailPostViewController: BaseViewController {
     private var comments: [Comment] = []
     private var user: User = User()
     private let presenter = DetailPostPresenter()
+    private var itemButton = UIButton()
     
     //MARK: - Circle of life
     override func viewDidLoad() {
         super.viewDidLoad()
         if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
             let postRealm = presenter.getPostInRealm(idPost: post.id.value!)
-            let nameImage = (postRealm?.isFavorite ?? false) ? "star.fill" : "star"
-            let item = UIBarButtonItem(image: UIImage(systemName: nameImage),
-                                       style: .plain,
-                                       target: self,
-                                       action: #selector(favoriteTapped))
-            item.tintColor = .systemYellow
-            navigationItem.rightBarButtonItem = item
+            self.itemButton = UIButton(type: .custom)
+            itemButton.setImage(UIImage(systemName: "star"), for: .normal)
+            itemButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+            itemButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            itemButton.tintColor = .systemYellow
+            itemButton.addTarget(self, action: #selector(favoriteTapped(_:)), for: .touchUpInside)
+            itemButton.isSelected = (postRealm?.isFavorite ?? false) ? true : false
+            let item = UIBarButtonItem(customView: itemButton)
+            navigationItem.setRightBarButtonItems([item], animated: true)
         }
         presenter.attachView(view: self)
     }
@@ -72,7 +75,7 @@ class DetailPostViewController: BaseViewController {
     }
     
     //MARK: - Actions
-    @objc private func favoriteTapped(){
+    @objc private func favoriteTapped(_ sender: UIButton){
         if let post: Post = SessionManager.getCodableSession(key: GlobalConstants.Keys.savePostSelected) {
             presenter.setFavoritePostInRealm(idPost: post.id.value!)
         }
@@ -108,15 +111,7 @@ extension DetailPostViewController: ServiceDetailPostView {
     }
     
     func changeFavoriteButton(isFavorite: Bool) {
-        let item = UIBarButtonItem(image: UIImage(systemName: "start"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(favoriteTapped))
-        item.setBackgroundImage(UIImage(systemName: "star.fill"),
-                                for: .selected,
-                                barMetrics: .default)
-        item.tintColor = .systemYellow
-        navigationItem.rightBarButtonItem = item
+        self.itemButton.isSelected = isFavorite
     }
             
     func setUser(user: User) {
