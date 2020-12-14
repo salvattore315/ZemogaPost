@@ -8,6 +8,8 @@ target 'ZemogaPost' do
   # Pods for ZemogaPost
   pod 'Alamofire'
   pod 'RealmSwift'
+  pod 'SwiftGen', '~> 6.0'
+  pod 'KVNProgress'
 
   target 'ZemogaPostTests' do
     inherit! :search_paths

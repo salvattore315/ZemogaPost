@@ -32,6 +32,7 @@
 		BEC55E422586755E007CF7D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E412586755E007CF7D2 /* User.swift */; };
 		BEC55E4725867573007CF7D2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E4625867573007CF7D2 /* Comment.swift */; };
 		BEC55E5025868859007CF7D2 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC55E4F25868859007CF7D2 /* SessionManager.swift */; };
+		BEC55EB42586E6FD007CF7D2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC55EB62586E6FD007CF7D2 /* Localizable.strings */; };
 		C19A4BFA219F64E8AB578348 /* Pods_ZemogaPost_ZemogaPostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 390C1BBFF37F0944728C9ABB /* Pods_ZemogaPost_ZemogaPostUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,8 @@
 		BEC55E412586755E007CF7D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BEC55E4625867573007CF7D2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		BEC55E4F25868859007CF7D2 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		BEC55EAA2586E4B7007CF7D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		BEC55EB52586E6FD007CF7D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C220B23DE0874666AC8B77BA /* Pods-ZemogaPost.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.development.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.development.xcconfig"; sourceTree = "<group>"; };
 		C40D351657B3E4EADCA12CF8 /* Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZemogaPost-ZemogaPostUITests/Pods-ZemogaPost-ZemogaPostUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD54A447C2D460EBDDB490EC /* Pods-ZemogaPost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaPost.release.xcconfig"; path = "Target Support Files/Pods-ZemogaPost/Pods-ZemogaPost.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,16 +183,11 @@
 		BE547F8B2585741C004874D8 /* ZemogaPost */ = {
 			isa = PBXGroup;
 			children = (
-				BE26E7A72585C0720086C66B /* GlobalConstant.swift */,
 				BE547FD02585866A004874D8 /* Configuration Controllers */,
 				BE26E79C2585BEBC0086C66B /* Model */,
 				BE26E79B2585BEAB0086C66B /* Service */,
 				BEC55E4E2586884B007CF7D2 /* Utils */,
-				BE547F8C2585741C004874D8 /* AppDelegate.swift */,
-				BE547F8E2585741C004874D8 /* SceneDelegate.swift */,
-				BE547F922585741C004874D8 /* Main.storyboard */,
-				BE547F9A2585741E004874D8 /* LaunchScreen.storyboard */,
-				BE547F982585741E004874D8 /* Assets.xcassets */,
+				BEC55EAE2586E524007CF7D2 /* Resources */,
 				BE547F9D2585741E004874D8 /* Info.plist */,
 				BE547F952585741C004874D8 /* ZemogaPost.xcdatamodeld */,
 			);
@@ -252,6 +250,36 @@
 				BE26E7C82585D6430086C66B /* Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BEC55EAE2586E524007CF7D2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BEC55EB02586E564007CF7D2 /* Aplications */,
+				BEC55EAF2586E54D007CF7D2 /* Storyboards */,
+				BE547F982585741E004874D8 /* Assets.xcassets */,
+				BEC55EB62586E6FD007CF7D2 /* Localizable.strings */,
+				BE26E7A72585C0720086C66B /* GlobalConstant.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BEC55EAF2586E54D007CF7D2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BE547F922585741C004874D8 /* Main.storyboard */,
+				BE547F9A2585741E004874D8 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BEC55EB02586E564007CF7D2 /* Aplications */ = {
+			isa = PBXGroup;
+			children = (
+				BE547F8E2585741C004874D8 /* SceneDelegate.swift */,
+				BE547F8C2585741C004874D8 /* AppDelegate.swift */,
+			);
+			path = Aplications;
 			sourceTree = "<group>";
 		};
 		CB314A7FF5C80D232D432D03 /* Pods */ = {
@@ -382,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE547F9C2585741E004874D8 /* LaunchScreen.storyboard in Resources */,
+				BEC55EB42586E6FD007CF7D2 /* Localizable.strings in Resources */,
 				BE547F992585741E004874D8 /* Assets.xcassets in Resources */,
 				BE547F942585741C004874D8 /* Main.storyboard in Resources */,
 			);
@@ -568,6 +597,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE547F932585741C004874D8 /* Base */,
+				BEC55EAA2586E4B7007CF7D2 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -578,6 +608,14 @@
 				BE547F9B2585741E004874D8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BEC55EB62586E6FD007CF7D2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEC55EB52586E6FD007CF7D2 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
